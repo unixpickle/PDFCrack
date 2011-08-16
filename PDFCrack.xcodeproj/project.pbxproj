@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA4CCEA613F9B26F00AC83B4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = FA4CCEA513F9B26F00AC83B4 /* main.c */; };
+		FA4CCEAF13F9B28300AC83B4 /* PDFReader.c in Sources */ = {isa = PBXBuildFile; fileRef = FA4CCEAD13F9B28300AC83B4 /* PDFReader.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,8 @@
 		FA4CCEA113F9B26F00AC83B4 /* PDFCrack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PDFCrack; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA4CCEA513F9B26F00AC83B4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		FA4CCEA713F9B26F00AC83B4 /* PDFCrack.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PDFCrack.1; sourceTree = "<group>"; };
+		FA4CCEAD13F9B28300AC83B4 /* PDFReader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = PDFReader.c; sourceTree = "<group>"; };
+		FA4CCEAE13F9B28300AC83B4 /* PDFReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFReader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				FA4CCEA513F9B26F00AC83B4 /* main.c */,
 				FA4CCEA713F9B26F00AC83B4 /* PDFCrack.1 */,
+				FA4CCEAE13F9B28300AC83B4 /* PDFReader.h */,
+				FA4CCEAD13F9B28300AC83B4 /* PDFReader.c */,
 			);
 			path = PDFCrack;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4CCEA613F9B26F00AC83B4 /* main.c in Sources */,
+				FA4CCEAF13F9B28300AC83B4 /* PDFReader.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +163,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				OTHER_LDFLAGS = "-lcrypto";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -168,6 +175,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				OTHER_LDFLAGS = "-lcrypto";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
