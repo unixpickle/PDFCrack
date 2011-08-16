@@ -67,8 +67,9 @@ bool checkPassword (const char * userPass, const unsigned char * userHash, const
 	RC4_set_key(&key, 5, theKey);
 	RC4(&key, 32, userHash, destination);
 	for (i = 0; i < 32; i++) {
-		
+		if (destination[i] != AdobeEncString[i]) return false;
 	}
+	return true;
 }
 
 int main (int argc, const char * argv[]) {
@@ -145,17 +146,11 @@ int main (int argc, const char * argv[]) {
 	
 	PDFReaderClose(reader);
 	
-	printf("Testing decode with key \"12345\"\n");
-	genEncKey("12345", (const char *)docID, docIDLength, ownerPassword, permissions, encKey);
-	RC4_KEY key;
-	RC4_set_key(&key, 5, encKey);
-	RC4(&key, 32, userPassword, decPassword);
-	
-	printf("Decrypted user password: ");
-	for (int i = 0; i < 32; i++) {
-		printf("%02x", decPassword[i]);
+	if (checkPassword("12345", userPassword, (const char *)docID, docIDLength, ownerPassword, permissions)) {
+		printf("Wow, the password is 12345.\n");
+	} else {
+		printf("The password definitely isn't 12345... or maybe it is?\n");
 	}
-	printf("\n");
 	
 	
 	
