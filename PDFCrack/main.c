@@ -138,6 +138,8 @@ int main (int argc, const char * argv[]) {
 		for (i = 1; i < argc - 1; i++) {
 			if (strcmp(argv[i], "-d") == 0) {
 				dictionaryPath = argv[++i];
+			} else if (strcmp(argv[i], "--stdin") == 0) {
+				dictionaryFp = stdin;
 			} else {
 				fprintf(stderr, "Invalid option: %s\n", argv[i]);
 				fflush(stderr);
@@ -146,7 +148,7 @@ int main (int argc, const char * argv[]) {
 		}
 		pdfPath = argv[argc - 1];
 	} else {
-		fprintf(stderr, "Usage: %s [-d dictionary] <pdf file>\n", argv[0]);
+		fprintf(stderr, "Usage: %s [-d dictionary | --stdin] <pdf file>\n", argv[0]);
 		fflush(stderr);
 		return -1;
 	}
@@ -227,14 +229,14 @@ int main (int argc, const char * argv[]) {
 		} else {
 			missed ++;
 			if (missed % 30000 == 0) {
-				printf("Tried %lld passwords.  Current password: %s       \r", missed, testPassword);
+				printf("Tried %lld passwords.  Current password: %s\n", missed, testPassword);
 			}
 		}
 	}
 	
 	free(workArea);
 	
-	fclose(dictionaryFp);
+	if (dictionaryFp != stdin) fclose(dictionaryFp);
 	printf("Password not found.\n");
 	
     return 0;
