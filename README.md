@@ -1,3 +1,8 @@
+Deprecated
+==========
+
+I wrote this a LONG time ago and I am not even sure if it actually works. I would not recommend this to anybody, even as a guide to writing a new and better PDF cracker.
+
 Usage
 =====
 
